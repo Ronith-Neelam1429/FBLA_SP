@@ -1,11 +1,13 @@
+import 'package:fbla_sp/mainapp/account.dart';
 import 'package:fbla_sp/signup/signup2.dart';
 import 'package:flutter/material.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(const Sign3());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Sign3 extends StatelessWidget {
+  const Sign3({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +21,8 @@ class MyApp extends StatelessWidget {
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color.fromARGB(255, 16, 58, 16),
-                    Color.fromARGB(255, 0, 0, 0),
+                    Color.fromARGB(255, 19, 70, 165),
+                    Color.fromARGB(255, 7, 6, 56),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -285,19 +287,35 @@ class SignUP extends StatelessWidget {
               children: [
                 Container(
                   height: 50,
+                  width: 290,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 58, 193, 142),
+                    color: const Color.fromARGB(255, 185, 78, 78),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   padding: const EdgeInsets.all(5),
-                  width: 290,
                   alignment: Alignment.center,
-                  child: const Text(
-                    'Continue',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(290, 50),
+                      foregroundColor: Colors.transparent,
+                      backgroundColor:
+                          Colors.transparent, // Transparent text color
+                      elevation: 0, // No shadow
+                    ),
+                    child: const Text(
+                      'Continue',
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
                     ),
                   ),
                 ),

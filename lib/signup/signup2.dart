@@ -1,3 +1,4 @@
+import 'package:fbla_sp/signup/signup3.dart';
 import 'package:flutter/material.dart';
 import 'signup1.dart';
 
@@ -20,8 +21,8 @@ class sign2 extends StatelessWidget {
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color.fromARGB(255, 16, 58, 16),
-                    Color.fromARGB(255, 0, 0, 0),
+                    Color.fromARGB(255, 7, 6, 80),
+                    Color.fromARGB(255, 19, 70, 165),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -40,11 +41,11 @@ class sign2 extends StatelessWidget {
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               top: 200.0,
               bottom: 30,
               width: 370,
-              child: SignUP(),
+              child: SignUP2(),
             ),
           ],
         ),
@@ -53,9 +54,9 @@ class sign2 extends StatelessWidget {
   }
 }
 
-class SignUP extends StatelessWidget {
-  const SignUP({Key? key}) : super(key: key);
-
+class SignUP2 extends StatelessWidget {
+  SignUP2({Key? key}) : super(key: key);
+  TextEditingController myControllerSignInCon = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -129,15 +130,36 @@ class SignUP extends StatelessWidget {
               ],
             ),
           ),
-          const Positioned(
-            top: 195,
-            left: 120,
-            child: Text(
-              '*** - ***',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 35,
-              ),
+          Positioned(
+            top: 189,
+            left: 30,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 234, 239, 238),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.all(10),
+                  width: 290,
+                  alignment: Alignment.centerLeft,
+                  child: TextField(
+                    controller: myControllerSignInCon,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 35,
+                      color: Color.fromARGB(255, 0, 0,
+                          0), // Change the text color to your desired color
+                    ),
+                    decoration: const InputDecoration(
+                      hintText: "***-***",
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Positioned(
@@ -166,19 +188,34 @@ class SignUP extends StatelessWidget {
               children: [
                 Container(
                   height: 50,
+                  width: 290,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 58, 193, 142),
+                    color: const Color.fromARGB(255, 185, 78, 78),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   padding: const EdgeInsets.all(5),
-                  width: 290,
                   alignment: Alignment.center,
-                  child: const Text(
-                    'Continue',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Sign3()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(290, 50),
+                      foregroundColor: Colors.transparent,
+                      backgroundColor:
+                          Colors.transparent, // Transparent text color
+                      elevation: 0, // No shadow
+                    ),
+                    child: const Text(
+                      'Continue',
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
                     ),
                   ),
                 ),

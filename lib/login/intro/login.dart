@@ -3,11 +3,11 @@ import 'package:fbla_sp/signup/signup1.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Login());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +57,8 @@ class MyApp extends StatelessWidget {
 // ignore: must_be_immutable
 class SignUP extends StatelessWidget {
   SignUP({Key? key}) : super(key: key);
-  TextEditingController myController1 = TextEditingController();
-  TextEditingController myController2 = TextEditingController();
+  TextEditingController myControllerLoginEmail = TextEditingController();
+  TextEditingController myControllerLoginPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +111,7 @@ class SignUP extends StatelessWidget {
                   width: 290,
                   alignment: Alignment.centerLeft,
                   child: TextField(
-                    controller: myController1,
+                    controller: myControllerLoginEmail,
                     decoration: const InputDecoration(
                       hintText: "Email",
                       border: InputBorder.none,
@@ -137,7 +137,7 @@ class SignUP extends StatelessWidget {
                   width: 290,
                   alignment: Alignment.centerLeft,
                   child: TextField(
-                    controller: myController2,
+                    controller: myControllerLoginPassword,
                     decoration: const InputDecoration(
                       hintText: "Password",
                       border: InputBorder.none,

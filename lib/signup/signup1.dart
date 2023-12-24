@@ -1,3 +1,5 @@
+import 'package:fbla_sp/login/intro/login.dart';
+import 'package:fbla_sp/signup/signup2.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,7 +42,7 @@ class SignUP1 extends StatelessWidget {
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               top: 200.0,
               bottom: 30,
               width: 370,
@@ -53,8 +55,13 @@ class SignUP1 extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class SignUP extends StatelessWidget {
-  const SignUP({Key? key}) : super(key: key);
+  SignUP({Key? key}) : super(key: key);
+  TextEditingController myControllerSignUpEmail = TextEditingController();
+  TextEditingController myControllerSignUpPassword = TextEditingController();
+  TextEditingController myControllerSignUpConfirmPassword =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -103,15 +110,14 @@ class SignUP extends StatelessWidget {
                     color: const Color.fromARGB(255, 234, 239, 238),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(5),
                   width: 290,
                   alignment: Alignment.centerLeft,
-                  child: const Text(
-                    'Email ',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey,
+                  child: TextField(
+                    controller: myControllerSignUpEmail,
+                    decoration: const InputDecoration(
+                      hintText: "Email",
+                      border: InputBorder.none,
                     ),
                   ),
                 ),
@@ -130,25 +136,15 @@ class SignUP extends StatelessWidget {
                     color: const Color.fromARGB(255, 234, 239, 238),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(5),
                   width: 290,
                   alignment: Alignment.centerLeft,
-                  child: const Row(
-                    children: [
-                      Text(
-                        'Password',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      const Spacer(),
-                      Icon(
-                        Icons.visibility_off,
-                        color: Colors.grey,
-                      ),
-                    ],
+                  child: TextField(
+                    controller: myControllerSignUpPassword,
+                    decoration: const InputDecoration(
+                      hintText: "Password",
+                      border: InputBorder.none,
+                    ),
                   ),
                 ),
               ],
@@ -166,25 +162,15 @@ class SignUP extends StatelessWidget {
                     color: const Color.fromARGB(255, 234, 239, 238),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(5),
                   width: 290,
                   alignment: Alignment.centerLeft,
-                  child: const Row(
-                    children: [
-                      Text(
-                        'Confirm password',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      const Spacer(),
-                      Icon(
-                        Icons.visibility_off,
-                        color: Colors.grey,
-                      ),
-                    ],
+                  child: TextField(
+                    controller: myControllerSignUpConfirmPassword,
+                    decoration: const InputDecoration(
+                      hintText: "Confirm Password",
+                      border: InputBorder.none,
+                    ),
                   ),
                 ),
               ],
@@ -222,19 +208,34 @@ class SignUP extends StatelessWidget {
               children: [
                 Container(
                   height: 50,
+                  width: 290,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 185, 78, 78),
+                    color: const Color.fromARGB(255, 185, 78, 78),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   padding: const EdgeInsets.all(5),
-                  width: 290,
                   alignment: Alignment.center,
-                  child: const Text(
-                    'Continue',
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 255, 255, 255),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const sign2()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(290, 50),
+                      foregroundColor: Colors.transparent,
+                      backgroundColor:
+                          Colors.transparent, // Transparent text color
+                      elevation: 0, // No shadow
+                    ),
+                    child: const Text(
+                      'Continue',
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
                     ),
                   ),
                 ),
@@ -318,24 +319,38 @@ class SignUP extends StatelessWidget {
           Positioned(
             top: 530,
             left: 30,
-            child: RichText(
-              text: const TextSpan(
-                text: 'Have an account? ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 228, 225, 225),
-                  fontSize: 15,
-                ),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Sign in',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                      fontSize: 15,
-                    ),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Login()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(0, 0),
+                foregroundColor: Colors.transparent,
+                backgroundColor: Colors.transparent, // Transparent text color
+                elevation: 0, // No shadow
+              ),
+              child: RichText(
+                text: const TextSpan(
+                  text: 'Have an account? ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 228, 225, 225),
+                    fontSize: 15,
                   ),
-                ],
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Sign In',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blue,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
