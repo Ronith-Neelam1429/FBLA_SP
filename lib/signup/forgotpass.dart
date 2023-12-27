@@ -1,6 +1,6 @@
+import 'package:fbla_sp/login/intro/login.dart';
 import 'package:fbla_sp/signup/signup3.dart';
 import 'package:flutter/material.dart';
-import 'signup1.dart';
 
 void main() {
   runApp(const sign2());
@@ -30,10 +30,10 @@ class sign2 extends StatelessWidget {
               ),
             ),
             const Positioned(
-              top: 90,
-              left: 20,
+              top: 85,
+              left: 60,
               child: Text(
-                'Confirm your\nemail ',
+                'Back ',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 25,
@@ -46,6 +46,24 @@ class sign2 extends StatelessWidget {
               bottom: 30,
               width: 370,
               child: SignUP2(),
+            ),
+            Positioned(
+              top: 75,
+              left: 10,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.grey,
+                  size: 37,
+                ),
+                onPressed: () {
+                  // Handle back button press
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Login()),
+                  );
+                },
+              ),
             ),
           ],
         ),
@@ -83,7 +101,7 @@ class SignUP2 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  '2 out of 3',
+                  '',
                   style: TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
                     fontSize: 20,
@@ -94,68 +112,39 @@ class SignUP2 extends StatelessWidget {
             ),
           ),
           const Positioned(
-            top: 70,
+            top: 40,
             left: 20,
             child: Text(
-              'We just sent a confirmation code to\nplaceholder@gmail.com',
+              'Did someone forget their password?\n                      Don\'t worry!\nPlease enter your email address so\nwe can send you a password reset link!',
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: 17,
+                fontSize: 20,
               ),
             ),
           ),
           Positioned(
-            top: 150,
-            left: 30,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 234, 239, 238),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: const EdgeInsets.all(10),
-                  width: 290,
-                  alignment: Alignment.topLeft,
-                  child: const Text(
-                    'Confirmation code ',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
             top: 189,
-            left: 30,
+            left: 40,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   height: 50,
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 234, 239, 238),
-                    borderRadius: BorderRadius.circular(10),
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    borderRadius: BorderRadius.circular(50),
                   ),
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.only(top: 15, left: 20),
                   width: 290,
                   alignment: Alignment.centerLeft,
                   child: TextField(
                     controller: myControllerSignInCon,
-                    textAlign: TextAlign.center,
                     style: const TextStyle(
-                      fontSize: 35,
-                      color: Color.fromARGB(255, 0, 0,
-                          0), // Change the text color to your desired color
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 0, 0, 0),
                     ),
                     decoration: const InputDecoration(
-                      hintText: "***-***",
+                      hintText: "Email address",
                       border: InputBorder.none,
                     ),
                   ),
@@ -164,26 +153,8 @@ class SignUP2 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: -5,
-            left: 10,
-            child: IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.grey,
-                size: 30,
-              ),
-              onPressed: () {
-                // Handle back button press
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignUP1()),
-                );
-              },
-            ),
-          ),
-          Positioned(
             top: 310,
-            left: 30,
+            left: 40,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -224,8 +195,8 @@ class SignUP2 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 260,
-            left: 30,
+            top: 250,
+            left: 45,
             child: RichText(
               text: const TextSpan(
                 text: 'Didn\'t get the email? ',
