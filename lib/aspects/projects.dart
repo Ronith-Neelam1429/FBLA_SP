@@ -13,7 +13,7 @@ class Projects extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: 1300, // Set a fixed height or adjust as needed
             child: Stack(
               children: [

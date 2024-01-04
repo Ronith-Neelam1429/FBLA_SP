@@ -1,11 +1,14 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:fbla_sp/mainapp/portfolio.dart';
+import 'package:fbla_sp/mainapp/settings.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const HomePage());
+  runApp(const Accountpage());
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class Accountpage extends StatelessWidget {
+  const Accountpage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class HomePage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: 1300, // Set a fixed height or adjust as needed
             child: Stack(
               children: [
@@ -68,6 +71,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
+        bottomNavigationBar: NavBar(),
       ),
     );
   }
@@ -534,6 +538,69 @@ class Description extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class NavBar extends StatefulWidget {
+  @override
+  _NavBarState createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  final List<Widget> _pages = [
+    Accountpage(),
+    Port(),
+    SettingsPage(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    BorderRadius.circular(30);
+    return CurvedNavigationBar(
+      height: 50,
+      buttonBackgroundColor: const Color.fromARGB(255, 189, 87, 87),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      color: Color.fromARGB(255, 17, 61, 143),
+      items: const <Widget>[
+        Icon(
+          Icons.person,
+          size: 30,
+          color: Colors.white,
+        ),
+        Icon(
+          Icons.home,
+          size: 30,
+          color: Colors.white,
+        ),
+        Icon(
+          Icons.settings,
+          size: 30,
+          color: Colors.white,
+        ),
+      ],
+      onTap: (index) {
+        if (index == 2) {
+          // Navigate to the SettingsPage when the "Settings" icon is tapped
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SettingsPage()),
+          );
+        }
+        if (index == 1) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Port()),
+          );
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Accountpage()),
+            );
+          }
+          setState(() {});
+        }
+      },
     );
   }
 }

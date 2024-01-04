@@ -1,3 +1,10 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:fbla_sp/aspects/achieve.dart';
+import 'package:fbla_sp/aspects/classes.dart';
+import 'package:fbla_sp/aspects/sports.dart';
+import 'package:fbla_sp/mainapp/account.dart';
+import 'package:fbla_sp/mainapp/portfolio.dart';
+import 'package:fbla_sp/mainapp/settings.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +20,7 @@ class Port extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: 1300, // Set a fixed height or adjust as needed
             child: Stack(
               children: [
@@ -75,6 +82,7 @@ class Port extends StatelessWidget {
             ),
           ),
         ),
+        bottomNavigationBar: NavBar(),
       ),
     );
   }
@@ -146,39 +154,62 @@ class HomeMain extends StatelessWidget {
   }
 }
 
-class TabView extends StatelessWidget {
-  const TabView({Key? key});
+class TabView extends StatefulWidget {
+  const TabView({Key? key}) : super(key: key);
+
+  @override
+  _TabViewState createState() => _TabViewState();
+}
+
+class _TabViewState extends State<TabView> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          margin: const EdgeInsets.only(top: 28, right: 10),
-          child: const Text(
-            "Portfolios",
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 28, left: 50),
-          child: const Text(
-            "Friends",
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 28, left: 60),
-          child: const Text(
-            "Search",
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
+        buildTabItem("Portfolios", 0),
+        buildTabItem("Friends", 1),
+        buildTabItem("Search", 2),
       ],
+    );
+  }
+
+  Widget buildTabItem(String text, int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      child: Container(
+        margin: const EdgeInsets.only(top: 28, right: 50),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: _selectedIndex == index
+                    ? const Color.fromARGB(255, 201, 67, 67) // Selected color
+                    : Colors.transparent, // Unselected color
+                width: 2.0, // Underline thickness
+              ),
+            ),
+          ),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight:
+                  _selectedIndex == index ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
 
+// ignore: must_be_immutable
 class Search extends StatelessWidget {
   Search({Key? key});
   TextEditingController searchBar = TextEditingController();
@@ -292,6 +323,73 @@ class PeoplePort extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class NavBar extends StatefulWidget {
+  @override
+  _NavBarState createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    Accountpage(),
+    Port(),
+    SettingsPage(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    BorderRadius.circular(30);
+    return CurvedNavigationBar(
+      height: 50,
+      buttonBackgroundColor: const Color.fromARGB(255, 189, 87, 87),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      color: Color.fromARGB(255, 17, 61, 143),
+      items: const <Widget>[
+        Icon(
+          Icons.person,
+          size: 30,
+          color: Colors.white,
+        ),
+        Icon(
+          Icons.home,
+          size: 30,
+          color: Colors.white,
+        ),
+        Icon(
+          Icons.settings,
+          size: 30,
+          color: Colors.white,
+        ),
+      ],
+      onTap: (index) {
+        if (index == 2) {
+          // Navigate to the SettingsPage when the "Settings" icon is tapped
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SettingsPage()),
+          );
+        }
+        if (index == 1) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Port()),
+          );
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Accountpage()),
+            );
+          }
+          setState(() {
+            _selectedIndex = index;
+          });
+        }
+      },
     );
   }
 }

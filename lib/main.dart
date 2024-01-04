@@ -1,8 +1,9 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fbla_sp/aspects/achieve.dart';
 import 'package:fbla_sp/aspects/classes.dart';
-import 'package:fbla_sp/aspects/commu.dart';
 import 'package:fbla_sp/aspects/sports.dart';
 import 'package:fbla_sp/mainapp/portfolio.dart';
+import 'package:fbla_sp/mainapp/settings.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
       home: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            height: 1300, // Set a fixed height or adjust as needed
+            height: 1000, // Set a fixed height or adjust as needed
             child: Stack(
               children: [
                 Container(
@@ -166,7 +167,7 @@ class HomeMain extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Port()),
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
               );
             },
             child: Container(
@@ -617,22 +618,62 @@ class Description extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-class NavBar extends StatelessWidget {
-  NavBar({super.key});
+class NavBar extends StatefulWidget {
+  @override
+  _NavBarState createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    HomePage(),
+    Port(),
+    SettingsPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        ],
-      ),
+    BorderRadius.circular(30);
+    return CurvedNavigationBar(
+      height: 50,
+      buttonBackgroundColor: const Color.fromARGB(255, 189, 87, 87),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      color: Color.fromARGB(255, 17, 61, 143),
+      items: const <Widget>[
+        Icon(
+          Icons.person,
+          size: 30,
+          color: Colors.white,
+        ),
+        Icon(
+          Icons.home,
+          size: 30,
+          color: Colors.white,
+        ),
+        Icon(
+          Icons.settings,
+          size: 30,
+          color: Colors.white,
+        ),
+      ],
+      onTap: (index) {
+        if (index == 2) {
+          // Navigate to the SettingsPage when the "Settings" icon is tapped
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SettingsPage()),
+          );
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Port()),
+          );
+          setState(() {
+            _selectedIndex = index;
+          });
+        }
+      },
     );
   }
 }

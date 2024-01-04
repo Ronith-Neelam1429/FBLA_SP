@@ -176,7 +176,7 @@ class SignUP2 extends StatelessWidget {
                 // Handle back button press
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignUP1()),
+                  MaterialPageRoute(builder: (context) => const SignUP1()),
                 );
               },
             ),

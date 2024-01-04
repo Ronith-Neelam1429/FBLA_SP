@@ -247,7 +247,7 @@ class SignUP extends StatelessWidget {
                 // Handle back button press
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => sign2()),
+                  MaterialPageRoute(builder: (context) => const sign2()),
                 );
               },
             ),
@@ -299,7 +299,7 @@ class SignUP extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const HomePage()),
+                            builder: (context) => const Accountpage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(

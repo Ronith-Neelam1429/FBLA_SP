@@ -60,7 +60,7 @@ class sign2 extends StatelessWidget {
                   // Handle back button press
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Login()),
+                    MaterialPageRoute(builder: (context) => const Login()),
                   );
                 },
               ),
@@ -131,7 +131,7 @@ class SignUP2 extends StatelessWidget {
                 Container(
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: const Color.fromARGB(255, 255, 255, 255),
                     borderRadius: BorderRadius.circular(50),
                   ),
                   padding: const EdgeInsets.only(top: 15, left: 20),
