@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fbla_sp/aspects/achieve.dart';
 import 'package:fbla_sp/aspects/classes.dart';
 import 'package:fbla_sp/aspects/sports.dart';
+import 'package:fbla_sp/mainapp/account.dart';
 import 'package:fbla_sp/mainapp/portfolio.dart';
 import 'package:fbla_sp/mainapp/settings.dart';
 import 'package:flutter/material.dart';
@@ -193,18 +194,6 @@ class HomeMain extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
-          top: 110,
-          left: 310,
-          child: Container(
-            width: 80,
-            height: 80,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-            ),
-          ),
-        )
       ],
     );
   }
@@ -631,49 +620,56 @@ class _NavBarState extends State<NavBar> {
     Port(),
     SettingsPage(),
   ];
-
+  int index = 1;
   @override
   Widget build(BuildContext context) {
     BorderRadius.circular(30);
-    return CurvedNavigationBar(
-      height: 50,
-      buttonBackgroundColor: const Color.fromARGB(255, 189, 87, 87),
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      color: Color.fromARGB(255, 17, 61, 143),
-      items: const <Widget>[
-        Icon(
-          Icons.person,
-          size: 30,
-          color: Colors.white,
-        ),
-        Icon(
-          Icons.home,
-          size: 30,
-          color: Colors.white,
-        ),
-        Icon(
-          Icons.settings,
-          size: 30,
-          color: Colors.white,
-        ),
-      ],
-      onTap: (index) {
-        if (index == 2) {
-          // Navigate to the SettingsPage when the "Settings" icon is tapped
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => SettingsPage()),
-          );
-        } else {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Port()),
-          );
+    return Scaffold(
+      bottomNavigationBar: CurvedNavigationBar(
+        height: 50,
+        buttonBackgroundColor: const Color.fromARGB(255, 189, 87, 87),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        color: Color.fromARGB(255, 17, 61, 143),
+        items: const <Widget>[
+          Icon(
+            Icons.person,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.home,
+            size: 30,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.settings,
+            size: 30,
+            color: Colors.white,
+          ),
+        ],
+        onTap: (selectedIndex) {
           setState(() {
-            _selectedIndex = index;
+            index = selectedIndex;
           });
-        }
-      },
+        },
+      ),
+      body: Container(child: getSelectedWidget(index: index)),
     );
+  }
+
+  Widget getSelectedWidget({required int index}) {
+    Widget widget;
+    switch (index) {
+      case 0:
+        widget = const Accountpage();
+        break;
+      case 1:
+        widget = const Port();
+        break;
+      default:
+        widget = const SettingsPage();
+        break;
+    }
+    return widget;
   }
 }

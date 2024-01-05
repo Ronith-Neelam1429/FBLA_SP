@@ -19,71 +19,69 @@ class Port extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: SingleChildScrollView(
-          child: SizedBox(
-            height: 1300, // Set a fixed height or adjust as needed
-            child: Stack(
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                  ),
+          body: SingleChildScrollView(
+        child: SizedBox(
+          height: 1300, // Set a fixed height or adjust as needed
+          child: Stack(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
-                const Positioned(
-                  top: 0,
-                  left: 0,
-                  height: 250,
-                  width: 500,
-                  child: HomeMain(),
-                ),
-                const Positioned(
-                  top: 0,
-                  left: 20,
-                  height: 250,
-                  width: 500,
-                  child: TabView(),
-                ),
-                Positioned(
-                  top: 180,
-                  left: 20,
-                  height: 250,
-                  width: 500,
-                  child: Search(),
-                ),
-                const Positioned(
-                  top: 260,
-                  left: 20,
-                  height: 250,
-                  width: 500,
-                  child: PeoplePort(),
-                ),
-                const Positioned(
-                  top: 420,
-                  left: 20,
-                  height: 250,
-                  width: 500,
-                  child: PeoplePort(),
-                ),
-                const Positioned(
-                  top: 580,
-                  left: 20,
-                  height: 250,
-                  width: 500,
-                  child: PeoplePort(),
-                ),
-                const Positioned(
-                  top: 740,
-                  left: 20,
-                  height: 250,
-                  width: 500,
-                  child: PeoplePort(),
-                ),
-              ],
-            ),
+              ),
+              const Positioned(
+                top: 0,
+                left: 0,
+                height: 250,
+                width: 500,
+                child: HomeMain(),
+              ),
+              const Positioned(
+                top: 0,
+                left: 20,
+                height: 250,
+                width: 500,
+                child: TabView(),
+              ),
+              Positioned(
+                top: 180,
+                left: 20,
+                height: 250,
+                width: 500,
+                child: Search(),
+              ),
+              const Positioned(
+                top: 260,
+                left: 20,
+                height: 250,
+                width: 500,
+                child: PeoplePort(),
+              ),
+              const Positioned(
+                top: 420,
+                left: 20,
+                height: 250,
+                width: 500,
+                child: PeoplePort(),
+              ),
+              const Positioned(
+                top: 580,
+                left: 20,
+                height: 250,
+                width: 500,
+                child: PeoplePort(),
+              ),
+              const Positioned(
+                top: 740,
+                left: 20,
+                height: 250,
+                width: 500,
+                child: PeoplePort(),
+              ),
+            ],
           ),
         ),
-        bottomNavigationBar: NavBar(),
-      ),
+      )),
     );
   }
 }
@@ -169,8 +167,8 @@ class _TabViewState extends State<TabView> {
     return Row(
       children: [
         buildTabItem("Portfolios", 0),
-        buildTabItem("Friends", 1),
-        buildTabItem("Search", 2),
+        //buildTabItem("Friends", 1),
+        //buildTabItem("Something", 2),
       ],
     );
   }

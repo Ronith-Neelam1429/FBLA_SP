@@ -29,6 +29,11 @@ class Class1 extends StatelessWidget {
                   width: 500,
                   child: HomeMain(),
                 ),
+                const Positioned(
+                  top: 200,
+                  left: 10,
+                  child: TabView(),
+                )
               ],
             ),
           ),
@@ -51,21 +56,91 @@ class HomeMain extends StatelessWidget {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 232, 232, 236),
-                Color.fromARGB(255, 163, 163, 163),
+                Color.fromARGB(255, 7, 6, 80),
+                Color.fromARGB(255, 19, 70, 165),
               ],
             ),
           ),
         ),
         const Positioned(
           top: 100,
-          left: 100,
+          left: 10,
           child: Text(
-            "TopG",
-            style: TextStyle(fontSize: 25),
+            "Classes",
+            style: TextStyle(fontSize: 35, color: Colors.white),
           ),
         ),
       ],
+    );
+  }
+}
+
+class TabView extends StatefulWidget {
+  const TabView({Key? key}) : super(key: key);
+
+  @override
+  _TabViewState createState() => _TabViewState();
+}
+
+class _TabViewState extends State<TabView> {
+  int _selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50, // Adjust the height as needed
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: List.generate(4, (index) {
+            return buildTabItem("Grade ${index + 9}", index);
+          }),
+        ),
+      ),
+    );
+  }
+
+  Widget buildTabItem(String text, int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: _selectedIndex == index
+                    ? const Color.fromARGB(255, 201, 67, 67) // Selected color
+                    : Colors.transparent, // Unselected color
+                width: 2.0, // Underline thickness
+              ),
+            ),
+          ),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight:
+                  _selectedIndex == index ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ClassesBox extends StatelessWidget {
+  const ClassesBox({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(),
     );
   }
 }
