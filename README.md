@@ -263,4 +263,33 @@ git clone https://github.com/Ronith-Neelam1429/FBLA_SP.git
 2. Then open Android SDK and start an emulator
 3. Connect VSCode to the emulator and Run
 \
-Thank you for viewing this project!
+# FBLA_SP - Private Repository
+
+Welcome to FBLA_SP, a Flutter app designed for FBLA (Future Business Leaders of America) members. This repository is private, and unauthorized use, reproduction, or distribution is strictly prohibited.
+
+## Repository
+
+Access to this repository is restricted. Unauthorized use or access is not allowed.
+
+## Copyright and License
+
+© 2024 [Ronith Neelam & Abhiram Somisetty]
+
+This project is not licensed for public use. All rights reserved. Unauthorized use, reproduction, or distribution of this software is strictly prohibited.
+
+
+
+## Usage
+
+This repository is for personal or authorized use only. Any other use is prohibited.
+
+## Contributing
+
+Contributions to this private repository are not accepted.
+
+## Support
+
+For inquiries or support, please contact me at ronithneelam1429@gmail.com.
+
+Thank you for your understanding.
+
